@@ -20,7 +20,6 @@ import Paper from '@mui/material/Paper';
 
 
 const CButton = styled(Button)`
-  color: #20b2aa;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 700;
@@ -29,7 +28,6 @@ const CButton = styled(Button)`
   height:45px;
   background-color:#F5F5F5;
   color:black;
-  fontFamily:Montserrat; 
   border-radius: 6.2px;
   transition: 0.5s;
   box-sizing: border-box;
@@ -59,16 +57,14 @@ function createData(name, calories, fat,id) {
 
 function Tableee(props){
 
-    
-
-   return<>
+return<>
 <div className="table">
 
 <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="center" style={{width:'40%'}}> (ФИО)</TableCell>
+            <TableCell align="center" style={{width:'40%'}}> ФИО</TableCell>
             <TableCell align="center" style={{width:'30%'}}>Название работы</TableCell>
             <TableCell align="center" style={{width:'30%'}}>Оценка</TableCell>
           </TableRow>

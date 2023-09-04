@@ -2,7 +2,6 @@ import './App.css';
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-import dva from './картиночки/dva.png'
 import { v4 as uuidv4 } from 'uuid';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
@@ -14,10 +13,10 @@ import Tableee2 from './Tableee2';
 import Tablichki from './Tablichki';
 import Tablichki2 from './Tablichki2';
 import Header from './Header'
+import Authorization from './Authorization';
 
 
 const CButton = styled(Button)`
-  color: #20b2aa;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 700;
@@ -26,7 +25,6 @@ const CButton = styled(Button)`
   height:45px;
   background-color:#F5F5F5;
   color:black;
-  fontFamily:Montserrat; 
   border-radius: 6.2px;
   transition: 0.5s;
   box-sizing: border-box;
@@ -52,8 +50,6 @@ function App() {
   const  [knop,setKnop] = React.useState([]);
   const [rows,setRows] = React.useState([
     createData('Маркевич Александр Викторович', 'Контрольная работа по биологии', 6.0, uuidv4()),
-    createData('Иванов Иван Иванович', 'Контрольная работа по биологии', 9.0, uuidv4()),
-    createData('Алексеев Богдан Витальевич', 'Контрольная работа по биологии', 16.0, uuidv4()),
     ]);
   
   return (
@@ -68,9 +64,10 @@ function App() {
       <Route path="/items" element={<Tablichki knop={knop} setKnop={setKnop} CButton={CButton}></Tablichki>}> 
         <Route path="/items/:item" element={<Tableee rows={rows} setRows={setRows}></Tableee>}/>
       </Route>
-      
+      <Route path="/Authorize" element={<Authorization/>}/>
     </Routes>
     </BrowserRouter>
+    
 
     
 

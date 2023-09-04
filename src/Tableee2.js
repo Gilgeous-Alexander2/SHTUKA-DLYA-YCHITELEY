@@ -19,7 +19,6 @@ import Paper from '@mui/material/Paper';
 
 
 const CButton = styled(Button)`
-  color: #20b2aa;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 700;
@@ -28,7 +27,6 @@ const CButton = styled(Button)`
   height:45px;
   background-color:#F5F5F5;
   color:black;
-  fontFamily:Montserrat; 
   border-radius: 6.2px;
   transition: 0.5s;
   box-sizing: border-box;
@@ -67,7 +65,7 @@ function Tableee2(props){
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="center" style={{width:'40%'}}> (Дата)</TableCell>
+            <TableCell align="center" style={{width:'40%'}}> Дата</TableCell>
             <TableCell align="center" style={{width:'30%'}}>Событие</TableCell>
           </TableRow>
         </TableHead>
@@ -77,7 +75,9 @@ function Tableee2(props){
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row" ><input style={{background:'transparent',width:'400px'}}></input></TableCell>
+              <TableCell component="th" scope="row" align="center"><input type="date" className="border"
+              style={{background:'transparent',width:'300px'}}></input></TableCell>
+
               <TableCell align="center">{row.calories}</TableCell>
               <TableCell align="center">{<CButton style={{minWidth: '35px', maxWidth: '35px',  height:'35px'}} 
               onClick={() => {props.setRows(old => old.filter(el => el.id !== row.id))}}>
