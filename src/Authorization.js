@@ -38,6 +38,7 @@ function Authorization(){
               <input className='input' placeholder="Логин"></input>
               <input className='input' placeholder="Пароль"></input>
               <CButton>Зарегистрироваться</CButton>
+              
           </div>
       </div>
     </div>

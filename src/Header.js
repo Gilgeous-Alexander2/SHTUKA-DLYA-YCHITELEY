@@ -1,8 +1,10 @@
 import SearchIcon from '@mui/icons-material/Search';
+import React from 'react';
 import TemporaryDrawer from './Drawer';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
+import DialogAuthoriz from './DialogAuthoriz';
 
 const CButton2 = styled(Button)`
   font-family: Montserrat;
@@ -28,6 +30,7 @@ const CButton2 = styled(Button)`
 `;
 
 function Header(props){
+
     return <>
       <div className='header'>
         <div style={{display:'flex',gap:'50px'}}>
@@ -42,7 +45,7 @@ function Header(props){
         <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
           <input style={{borderRadius:'25px',height:'25px',width:'200px',border: 'none'}}></input>
           <SearchIcon/>
-          <NavLink to="/Authorize"><CButton2>Регистрация</CButton2></NavLink>
+          <DialogAuthoriz CButton2={CButton2}></DialogAuthoriz>
 
         </div>
         

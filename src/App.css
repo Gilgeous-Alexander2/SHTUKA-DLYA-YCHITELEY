@@ -29,22 +29,23 @@
 }
 .Author{
   width: 500px;
-  height: 500px;
-  background-color: #ececec;
-  border-radius: 45px;
+  height: 450px;
+  background-color: #ffffff;
+  border-radius: 0 0 45px 45px;
   display: flex;
   flex-direction: column;
 }
 .podAuthor{
-  width: 100%;
   height: 50px;
   background: linear-gradient(#ff9c9c,#ff0000);
-  border-radius: 45px 45px 0 0;
 }
 .input{
-  width:300px;
+  width: 325px;
   border-radius: 45px;
-  font-size: 20px;
+  font-size: 22px;
+  font-family: Montserrat;
+  font-style: normal;
+  color:black;
 }
 .back{
   display: flex;
@@ -61,5 +62,5 @@
   font-style: normal;
   font-weight: 700;
   color:black;
-  font-size: 30px;
+  font-size: 40px;
 }

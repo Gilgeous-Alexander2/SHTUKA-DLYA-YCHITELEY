@@ -64,7 +64,6 @@ function App() {
       <Route path="/items" element={<Tablichki knop={knop} setKnop={setKnop} CButton={CButton}></Tablichki>}> 
         <Route path="/items/:item" element={<Tableee rows={rows} setRows={setRows}></Tableee>}/>
       </Route>
-      <Route path="/Authorize" element={<Authorization/>}/>
     </Routes>
     </BrowserRouter>
     
