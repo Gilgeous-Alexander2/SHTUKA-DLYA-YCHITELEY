@@ -5,7 +5,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import { styled } from '@mui/material/styles';
-import './table.css'
+
 import './App.css'
 
 
@@ -42,8 +42,8 @@ const CButton = styled(Button)`
     transform: scale(1);
    }
 `;
-function createData(name, calories, fat,id) {
-  return { name, calories, fat,id};
+function createData(name, login, parol,id) {
+  return { name, login, parol,id};
 }
 
   
@@ -65,8 +65,8 @@ return<>
         <TableHead>
           <TableRow>
             <TableCell align="center" style={{width:'40%'}}> ФИО</TableCell>
-            <TableCell align="center" style={{width:'30%'}}>Название работы</TableCell>
-            <TableCell align="center" style={{width:'30%'}}>Оценка</TableCell>
+            <TableCell align="center" style={{width:'30%'}}>Логин</TableCell>
+            <TableCell align="center" style={{width:'30%'}}>Пароль</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -76,8 +76,8 @@ return<>
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row" ><input className="border"></input></TableCell>
-              <TableCell align="center">{row.calories}</TableCell>
-              <TableCell align="center">{row.fat}</TableCell>
+              <TableCell align="center" style={{fontSize:'16px'}}>{row.login}</TableCell>
+              <TableCell align="center" style={{fontSize:'16px'}}>{row.parol}</TableCell>
               <TableCell align="center">{<CButton style={{minWidth: '35px', maxWidth: '35px',  height:'35px'}} 
               onClick={() => {props.setRows(old => old.filter(el => el.id !== row.id))}}>
                 <DeleteForeverIcon fontSize='large'/></CButton>}</TableCell>
@@ -94,7 +94,7 @@ return<>
         <div style={{display:'flex',flexGrow:1,}}></div>
         <div style={{paddingLeft:'125px',marginTop:'20px'}}>
           {props.rows.length<=20 && <CButton  onClick={() => {props.setRows(old => 
-        [...old, createData('Маркевич Александр Викторович', 'Контрольная работа по биологии', 6.0,{id: uuidv4()})])}
+        [...old, createData('Маркевич Александр Викторович', 'Login', 1234567,{id: uuidv4()})])}
         }><AddIcon fontSize='large'/></CButton>}
         </div>
         

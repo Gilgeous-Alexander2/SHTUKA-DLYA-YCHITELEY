@@ -5,7 +5,6 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import { styled } from '@mui/material/styles';
-import './table.css'
 import './App.css'
 
 import {Outlet} from "react-router-dom";
@@ -59,6 +58,7 @@ function Tableee2(props){
     
 
    return<>
+   
 <div className="table">
 
 <TableContainer component={Paper}>
@@ -70,7 +70,7 @@ function Tableee2(props){
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.rows.map((row) => (
+          {props.rows2.map((row) => (
             <TableRow
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -80,7 +80,7 @@ function Tableee2(props){
 
               <TableCell align="center">{row.calories}</TableCell>
               <TableCell align="center">{<CButton style={{minWidth: '35px', maxWidth: '35px',  height:'35px'}} 
-              onClick={() => {props.setRows(old => old.filter(el => el.id !== row.id))}}>
+              onClick={() => {props.setRows2(old => old.filter(el => el.id !== row.id))}}>
                 <DeleteForeverIcon fontSize='large'/></CButton>}</TableCell>
               
             </TableRow>
@@ -94,7 +94,7 @@ function Tableee2(props){
 
         <div style={{display:'flex',flexGrow:1,}}></div>
         <div style={{paddingLeft:'125px',marginTop:'20px'}}>
-          {props.rows.length<=20 && <CButton  onClick={() => {props.setRows(old => 
+          {props.rows2.length<=20 && <CButton  onClick={() => {props.setRows2(old => 
         [...old, createData('Маркевич Александр Викторович', 'Контрольная работа по биологии',{id: uuidv4()})])}
         }><AddIcon fontSize='large'/></CButton>}
         </div>

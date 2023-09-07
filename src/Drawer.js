@@ -64,7 +64,7 @@ function TemporaryDrawer() {
       <div style={{display:'flex',gap:'20px'}}>
         <NavLink to="/items" ><CButton onClick={ () => {setDrawer(false)
         }}><BuildIcon /></CButton></NavLink>
-        <div style={{alignItems:'center',display:'flex'}}> Редактор</div>
+        <div style={{alignItems:'center',display:'flex'}}> Редактор классов</div>
       </div>
     
     </div>

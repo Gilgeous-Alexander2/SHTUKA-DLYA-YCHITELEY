@@ -5,6 +5,7 @@ import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import { NavLink } from 'react-router-dom';
 import DialogAuthoriz from './DialogAuthoriz';
+import AlertDialogiii from './AUTHORIZ2';
 
 const CButton2 = styled(Button)`
   font-family: Montserrat;
@@ -46,6 +47,7 @@ function Header(props){
           <input style={{borderRadius:'25px',height:'25px',width:'200px',border: 'none'}}></input>
           <SearchIcon/>
           <DialogAuthoriz CButton2={CButton2}></DialogAuthoriz>
+          
 
         </div>
         

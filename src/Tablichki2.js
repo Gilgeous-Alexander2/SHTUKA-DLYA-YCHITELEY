@@ -5,6 +5,7 @@ import { BrowserRouter,NavLink, Routes, Route , Outlet} from "react-router-dom";
 
 function Tablichki2(props){
     return <>
+    <div className="Bukvi" style={{paddingLeft:'150px',marginTop:'40px'}}>Список классов</div>
     <div style={{display:'flex',marginTop:'40px'}}></div>
     <div style={{display:'flex',gap:'50px',paddingLeft:'150px',paddingRight:'100px',flexWrap:'wrap',height:'55px'}}>
 
@@ -14,9 +15,9 @@ function Tablichki2(props){
         )}
 
         <div style={{display:'flex',flexGrow:1,}}></div>
-        {props.knop.length<=10 && <props.CButton  onClick={() => {props.setKnop(old => [...old, {id: uuidv4(), name: "aza"}])}
-        }><AddIcon fontSize='large'/></props.CButton>}
+        
     </div>
+    <div className="Bukvi" style={{paddingLeft:'150px',marginTop:'75px'}}>Расписание</div>
     <Outlet/>
     </>
 }

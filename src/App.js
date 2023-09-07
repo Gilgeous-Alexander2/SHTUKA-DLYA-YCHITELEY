@@ -13,7 +13,7 @@ import Tableee2 from './Tableee2';
 import Tablichki from './Tablichki';
 import Tablichki2 from './Tablichki2';
 import Header from './Header'
-import Authorization from './Authorization';
+import AlertDialogiii from './AUTHORIZ2';
 
 
 const CButton = styled(Button)`
@@ -42,23 +42,26 @@ const CButton = styled(Button)`
 
 
 
-function createData(name, calories, fat, id) {
-  return { name, calories, fat, id};
+function createData(name, login, parol, id) {
+  return { name, login, parol, id};
 }
 
 function App() {
   const  [knop,setKnop] = React.useState([]);
-  const [rows,setRows] = React.useState([
+  const [rows2,setRows2] = React.useState([
     createData('Маркевич Александр Викторович', 'Контрольная работа по биологии', 6.0, uuidv4()),
     ]);
-  
+  const [rows,setRows] = React.useState([
+      createData('Маркевич Александр Викторович', 'Login', 1234567, uuidv4()),
+      ]);
+
   return (
     
     <BrowserRouter>
     <Header CButton={CButton}></Header>
     <Routes>
       <Route path="/items2" element={<Tablichki2 knop={knop} setKnop={setKnop} CButton={CButton}></Tablichki2>}>
-        <Route path="/items2/:item" element={<Tableee2 rows={rows} setRows={setRows}></Tableee2>}/>
+        <Route path="/items2/:item" element={<Tableee2 rows2={rows2} setRows2={setRows2}></Tableee2>}/>
       </Route>
 
       <Route path="/items" element={<Tablichki knop={knop} setKnop={setKnop} CButton={CButton}></Tablichki>}> 

@@ -22,6 +22,8 @@
 .border{
   background:transparent;
   width:500px;
+  text-align: center;
+  font-size: 16px;
   border-top: 1px solid #fff;
   border-left: 1px solid #fff;
   border-right: 1px solid #fff;
@@ -64,3 +66,13 @@
   color:black;
   font-size: 40px;
 }
+.table {
+  padding-left: 100px;
+  padding-right: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+

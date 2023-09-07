@@ -6,6 +6,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
+
+
 export default function DialogAuthoriz(props) {
 
     const [open, setOpen] = React.useState(false);
@@ -22,15 +24,16 @@ export default function DialogAuthoriz(props) {
     <div>
 
       <props.CButton2 onClick={handleClickOpen}>Регистрация</props.CButton2>
-      <Dialog
+      <Dialog 
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        
       >
         <DialogTitle id="alert-dialog-title" className='podAuthor'>
-        </DialogTitle>
-        <DialogContent className='Author'id="alert-dialog-description">
+            </DialogTitle>
+                <DialogContent className='Author'id="alert-dialog-description">
                 <div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'25px'}}>
               <div className='Bukvi' style={{marginTop:'60px',marginBottom:'30px'}}>Регистрация</div>
               <div style={{height:'2px',width:'420px',backgroundColor:'grey',marginBottom:'30px'}}></div>
@@ -39,8 +42,8 @@ export default function DialogAuthoriz(props) {
               <props.CButton2>Зарегистрироваться</props.CButton2>
               
               </div>
-        </DialogContent>
-        <DialogActions>
+            </DialogContent>
+            <DialogActions>
         </DialogActions>
       </Dialog>
     </div>
