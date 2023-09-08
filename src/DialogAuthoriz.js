@@ -29,11 +29,11 @@ export default function DialogAuthoriz(props) {
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        PaperProps={{ sx: { borderRadius: "45px" } }}
         
       >
-        <DialogTitle id="alert-dialog-title" className='podAuthor'>
-            </DialogTitle>
-                <DialogContent className='Author'id="alert-dialog-description">
+        <DialogTitle id="alert-dialog-title" className='podAuthor'></DialogTitle>
+            <DialogContent className='Author'id="alert-dialog-description" >
                 <div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'25px'}}>
               <div className='Bukvi' style={{marginTop:'60px',marginBottom:'30px'}}>Регистрация</div>
               <div style={{height:'2px',width:'420px',backgroundColor:'grey',marginBottom:'30px'}}></div>
@@ -43,8 +43,6 @@ export default function DialogAuthoriz(props) {
               
               </div>
             </DialogContent>
-            <DialogActions>
-        </DialogActions>
       </Dialog>
     </div>
   );

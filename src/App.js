@@ -49,7 +49,7 @@ function createData(name, login, parol, id) {
 function App() {
   const  [knop,setKnop] = React.useState([]);
   const [rows2,setRows2] = React.useState([
-    createData('Маркевич Александр Викторович', 'Контрольная работа по биологии', 6.0, uuidv4()),
+    createData('Маркевич Александр Викторович', ['Контрольная работа по биологии \n','hhhhhhh \n','ffffff'], 6.0, uuidv4()),
     ]);
   const [rows,setRows] = React.useState([
       createData('Маркевич Александр Викторович', 'Login', 1234567, uuidv4()),

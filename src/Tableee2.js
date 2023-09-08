@@ -78,7 +78,7 @@ function Tableee2(props){
               <TableCell component="th" scope="row" align="center"><input type="date" className="border"
               style={{background:'transparent',width:'300px'}}></input></TableCell>
 
-              <TableCell align="center">{row.calories}</TableCell>
+              <TableCell align="center">{row.login}</TableCell>
               <TableCell align="center">{<CButton style={{minWidth: '35px', maxWidth: '35px',  height:'35px'}} 
               onClick={() => {props.setRows2(old => old.filter(el => el.id !== row.id))}}>
                 <DeleteForeverIcon fontSize='large'/></CButton>}</TableCell>
