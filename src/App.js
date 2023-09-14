@@ -6,14 +6,16 @@ import { v4 as uuidv4 } from 'uuid';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { BrowserRouter,NavLink, Routes, Route , Outlet} from "react-router-dom";
+import { BrowserRouter, NavLink, Routes, Route, Outlet } from "react-router-dom";
 import { Table } from '@mui/material';
 import Tableee from './Tableee';
 import Tableee2 from './Tableee2';
 import Tablichki from './Tablichki';
 import Tablichki2 from './Tablichki2';
+import Tablichki3 from './Tablichki3';
+import Tableee3 from './Tableee3';
 import Header from './Header'
-import AlertDialogiii from './AUTHORIZ2';
+import AlertDialogiii from './AUTHORIZ2'; 
 
 
 const CButton = styled(Button)`
@@ -43,35 +45,47 @@ const CButton = styled(Button)`
 
 
 function createData(name, login, parol, id) {
-  return { name, login, parol, id};
+  return { name, login, parol, id };
 }
 
 function App() {
-  const  [knop,setKnop] = React.useState([]);
-  const [rows2,setRows2] = React.useState([
-    createData('Маркевич Александр Викторович', ['Контрольная работа по биологии \n','hhhhhhh \n','ffffff'], 6.0, uuidv4()),
-    ]);
-  const [rows,setRows] = React.useState([
-      createData('Маркевич Александр Викторович', 'Login', 1234567, uuidv4()),
-      ]);
+  const [knop, setKnop] = React.useState([]);
+  const [rows2, setRows2] = React.useState([
+    createData('Понедельник', ['Математика','Русский','Физическая культура','Окр. мир'], ['контроша','контроша','контроша','контроша'], uuidv4()),
+    createData('Вторник', ['Русский','Обществознание','История'], ['контроша','контроша','контроша'], uuidv4()),
+    createData('Среда', ['ЫЫЫыыыыыы','ыыыыы','ЫЫЫыыыыыыы'], ['контроша','контроша','контроша'], uuidv4()),
+    createData('Четверг', ['Математика','Русский','Физическая культура','Окр. мир'], ['контроша','контроша','контроша','контроша'], uuidv4()),
+    createData('Пятница', ['Русский','Обществознание','История'], ['контроша','контроша','контроша'], uuidv4()),
+    createData('Суббота', ['ЫЫЫыыыыыы','ыыыыы','ЫЫЫыыыыыыы'], ['контроша','контроша','контроша'], uuidv4()),
+  ]);
+  const [rows, setRows] = React.useState([
+    createData('Четверг', 'Login', 1234567, uuidv4()),
+  ]);
+
+ 
+
 
   return (
-    
+
     <BrowserRouter>
-    <Header CButton={CButton}></Header>
-    <Routes>
-      <Route path="/items2" element={<Tablichki2 knop={knop} setKnop={setKnop} CButton={CButton}></Tablichki2>}>
-        <Route path="/items2/:item" element={<Tableee2 rows2={rows2} setRows2={setRows2}></Tableee2>}/>
-      </Route>
+      <Header CButton={CButton}></Header>
+      <Routes>
+        <Route path="/items2" element={<Tablichki2 knop={knop} setKnop={setKnop} CButton={CButton}></Tablichki2>}>
+          <Route path="/items2/:item" element={<Tableee2 rows2={rows2} setRows2={setRows2}></Tableee2>} />
+        </Route>
 
-      <Route path="/items" element={<Tablichki knop={knop} setKnop={setKnop} CButton={CButton}></Tablichki>}> 
-        <Route path="/items/:item" element={<Tableee rows={rows} setRows={setRows}></Tableee>}/>
-      </Route>
-    </Routes>
+        <Route path="/items" element={<Tablichki knop={knop} setKnop={setKnop} CButton={CButton}></Tablichki>}>
+          <Route path="/items/:item" element={<Tableee rows={rows} setRows={setRows}></Tableee>} />
+        </Route>
+
+        <Route path="/items3" element={<Tablichki3 knop={knop} setKnop={setKnop} CButton={CButton}></Tablichki3>}>
+          <Route path="/items3/:item" element={<Tableee3 rows2={rows2} setRows2={setRows2}></Tableee3>} />
+        </Route>
+      </Routes>
     </BrowserRouter>
-    
 
-    
+
+
 
   );
 }

@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import { styled } from '@mui/material/styles';
 import './App.css'
+import { Box } from "@mui/material";
 
 import {Outlet} from "react-router-dom";
 import Table from '@mui/material/Table';
@@ -15,6 +16,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Height } from "@mui/icons-material";
 
 
 const CButton = styled(Button)`
@@ -65,23 +67,30 @@ function Tableee2(props){
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="center" style={{width:'40%'}}> Дата</TableCell>
-            <TableCell align="center" style={{width:'30%'}}>Событие</TableCell>
+            <TableCell align="center" style={{width:'40%'}}> День недели</TableCell>
+            <TableCell align="center" style={{width:'30%'}}>Предметы</TableCell>
+            <TableCell align="center" style={{width:'30%'}}>События</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {props.rows2.map((row) => (
             <TableRow
               key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row" align="center"><input type="date" className="border"
-              style={{background:'transparent',width:'300px'}}></input></TableCell>
+              sx={{ borderBottom:'1px solid rgba(224, 224, 224, 1)'}}>
+                
+              <TableCell component="th" scope="row" align="center">{row.name}</TableCell>
 
-              <TableCell align="center">{row.login}</TableCell>
-              <TableCell align="center">{<CButton style={{minWidth: '35px', maxWidth: '35px',  height:'35px'}} 
-              onClick={() => {props.setRows2(old => old.filter(el => el.id !== row.id))}}>
-                <DeleteForeverIcon fontSize='large'/></CButton>}</TableCell>
+              <TableCell sx={{borderRight:'1px solid rgba(224, 224, 224, 1)',borderLeft:'1px solid rgba(224, 224, 224, 1)',padding:0}}>
+                {row.login.map(login => (
+                  <div style={{padding: '16px 0 16px 0',width:'100%',textAlign:'center'}} >{login}</div>
+                ))}
+              </TableCell>
+
+              <TableCell sx={{padding:0}}>
+                  {row.parol.map(parol => (
+                      <div style={{paddingLeft:0,paddingRight:0,width:'100%',textAlign:'center',padding: '16px 0 16px 0'}} >{parol}</div>
+                  ))}
+              </TableCell>
               
             </TableRow>
           ))}
@@ -93,11 +102,7 @@ function Tableee2(props){
     
 
         <div style={{display:'flex',flexGrow:1,}}></div>
-        <div style={{paddingLeft:'125px',marginTop:'20px'}}>
-          {props.rows2.length<=20 && <CButton  onClick={() => {props.setRows2(old => 
-        [...old, createData('Маркевич Александр Викторович', 'Контрольная работа по биологии',{id: uuidv4()})])}
-        }><AddIcon fontSize='large'/></CButton>}
-        </div>
+        <div style={{height:'100px'}}></div>
         
    <Outlet/>
 

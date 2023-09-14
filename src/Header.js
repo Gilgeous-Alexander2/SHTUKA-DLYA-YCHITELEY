@@ -30,7 +30,16 @@ const CButton2 = styled(Button)`
    }
 `;
 
+
+
 function Header(props){
+
+  const [AuthState,setAuthState] = React.useState(null);
+
+  React.useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    setAuthState(userData);
+  },[])
 
     return <>
       <div className='header'>
@@ -46,8 +55,8 @@ function Header(props){
         <div style={{display:'flex',gap:'10px',alignItems:'center'}}>
           <input style={{borderRadius:'25px',height:'25px',width:'200px',border: 'none'}}></input>
           <SearchIcon/>
-          <DialogAuthoriz CButton2={CButton2}></DialogAuthoriz>
-          
+          <DialogAuthoriz CButton2={CButton2} setAuthState={setAuthState}></DialogAuthoriz>
+          <div>{AuthState? <div className='Bukvi' style={{fontSize:'17px'}}>Вы вошли!</div> : null}</div>
 
         </div>
         

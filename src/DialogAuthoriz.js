@@ -20,6 +20,9 @@ export default function DialogAuthoriz(props) {
         setOpen(false);
       };
 
+      const [login,setLogin] = React.useState("");
+      const [password,setPassword] = React.useState("");
+
   return (
     <div>
 
@@ -34,13 +37,21 @@ export default function DialogAuthoriz(props) {
       >
         <DialogTitle id="alert-dialog-title" className='podAuthor'></DialogTitle>
             <DialogContent className='Author'id="alert-dialog-description" >
-                <div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'25px'}}>
-              <div className='Bukvi' style={{marginTop:'60px',marginBottom:'30px'}}>Регистрация</div>
-              <div style={{height:'2px',width:'420px',backgroundColor:'grey',marginBottom:'30px'}}></div>
-              <input className='input' placeholder="Логин" ></input>
-              <input className='input' placeholder="Пароль" style={{marginBottom:'10px'}}></input>
-              <props.CButton2>Зарегистрироваться</props.CButton2>
-              
+              <div style={{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'25px'}}>
+                <div className='Bukvi' style={{marginTop:'60px',marginBottom:'30px'}}>Регистрация</div>
+                <div style={{height:'2px',width:'420px',backgroundColor:'grey',marginBottom:'30px'}}></div>
+
+                <input className='input' placeholder="Логин" value={login} onChange={(e) => {setLogin(e.target.value)}}></input>
+                <input className='input' placeholder="Пароль" value={password} onChange={(e) => {setPassword(e.target.value)}}></input>
+                <props.CButton2 onClick={() => { handleClose()
+                  const answer = {
+                    id: 1,
+                    name: "ыыыыы",
+                    token: "fcgvhbjnbmvcfbvmnbvgfhhjjnbhvgf"
+                  }
+                  props.setAuthState(answer);
+                  localStorage.setItem("userData",JSON.stringify(answer))
+                }}>Зарегистрироваться</props.CButton2>
               </div>
             </DialogContent>
       </Dialog>

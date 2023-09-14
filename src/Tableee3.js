@@ -5,9 +5,8 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import { styled } from '@mui/material/styles';
-
 import './App.css'
-
+import { Box } from "@mui/material";
 
 import {Outlet} from "react-router-dom";
 import Table from '@mui/material/Table';
@@ -17,6 +16,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Height } from "@mui/icons-material";
 
 
 const CButton = styled(Button)`
@@ -42,8 +42,8 @@ const CButton = styled(Button)`
     transform: scale(1);
    }
 `;
-function createData(name, login, parol,id) {
-  return { name, login, parol,id};
+function createData(name, calories,id) {
+  return { name, calories,id};
 }
 
   
@@ -55,32 +55,42 @@ function createData(name, login, parol,id) {
 //     createData('Gingerbread', 356, 16.0, 49, 3.9),
 //   ];
 
-function Tableee(props){
+function Tableee3(props){
+
+    
 
 return<>
+   
 <div className="table">
 
 <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="center" style={{width:'40%'}}> ФИО</TableCell>
-            <TableCell align="center" style={{width:'30%'}}>Логин</TableCell>
-            <TableCell align="center" style={{width:'30%'}}>Пароль</TableCell>
+            <TableCell align="center" style={{width:'40%'}}> День недели</TableCell>
+            <TableCell align="center" style={{width:'30%'}}>Предметы</TableCell>
+            <TableCell align="center" style={{width:'30%'}}>События</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.rows.map((row) => (
+          {props.rows2.map((row) => (
             <TableRow
               key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row" ><input className="border"></input></TableCell>
-              <TableCell align="center" style={{fontSize:'16px'}}>{row.login}</TableCell>
-              <TableCell align="center" style={{fontSize:'16px'}}>{row.parol}</TableCell>
-              <TableCell align="center">{<CButton style={{minWidth: '35px', maxWidth: '35px',  height:'35px'}} 
-              onClick={() => {props.setRows(old => old.filter(el => el.id !== row.id))}}>
-                <DeleteForeverIcon fontSize='large'/></CButton>}</TableCell>
+              sx={{ borderBottom:'1px solid rgba(224, 224, 224, 1)'}}>
+                
+              <TableCell component="th" scope="row" align="center">{<input></input>}</TableCell>
+
+              <TableCell sx={{borderRight:'1px solid rgba(224, 224, 224, 1)',borderLeft:'1px solid rgba(224, 224, 224, 1)',padding:0}}>
+                {row.login.map(() => (
+                  <div style={{padding: '16px 0 16px 0',width:'100%',textAlign:'center'}} >{<input></input>}</div>
+                ))}
+              </TableCell>
+
+              <TableCell sx={{padding:0}}>
+                  {row.parol.map(() => (
+                      <div style={{paddingLeft:0,paddingRight:0,width:'100%',textAlign:'center',padding: '16px 0 16px 0'}} >{<input></input>}</div>
+                  ))}
+              </TableCell>
               
             </TableRow>
           ))}
@@ -92,14 +102,8 @@ return<>
     
 
         <div style={{display:'flex',flexGrow:1,}}></div>
-        <div style={{paddingLeft:'125px',marginTop:'20px'}}>
-          {props.rows.length<=20 && <CButton  onClick={() => {props.setRows(old => 
-        [...old, createData('Маркевич Александр Викторович', 'Login', 1234567,{id: uuidv4()})])}
-        }><AddIcon fontSize='large'/></CButton>}
-        </div>
-
-        
         <div style={{height:'100px'}}></div>
+        
    <Outlet/>
 
    </>
@@ -107,4 +111,4 @@ return<>
    
 }
 
-export default Tableee;
+export default Tableee3;

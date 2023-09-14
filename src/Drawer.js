@@ -3,11 +3,13 @@ import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import TableViewIcon from '@mui/icons-material/TableView';
 import BuildIcon from '@mui/icons-material/Build';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import AddIcon from '@mui/icons-material/Add';
 import { BrowserRouter,NavLink, Routes, Route } from "react-router-dom";
 import { red } from '@mui/material/colors';
+
 const CButton = styled(Button)`
   color: #20b2aa;
   font-family: Montserrat;
@@ -65,6 +67,12 @@ function TemporaryDrawer() {
         <NavLink to="/items" ><CButton onClick={ () => {setDrawer(false)
         }}><BuildIcon /></CButton></NavLink>
         <div style={{alignItems:'center',display:'flex'}}> Редактор классов</div>
+      </div>
+
+      <div style={{display:'flex',gap:'20px'}}>
+        <NavLink to="/items3" ><CButton onClick={ () => {setDrawer(false)
+        }}><BorderColorIcon/></CButton></NavLink>
+        <div style={{alignItems:'center',display:'flex'}}> Редактор расписания</div>
       </div>
     
     </div>
