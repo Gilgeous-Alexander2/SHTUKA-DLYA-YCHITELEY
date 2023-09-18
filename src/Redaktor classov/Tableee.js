@@ -2,11 +2,10 @@ import { BrowserRouter,NavLink, Routes, Route } from "react-router-dom";
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import { styled } from '@mui/material/styles';
+import { CButton } from "../Components/CButton";
 
-import './App.css'
+import '../App.css'
 
 
 import {Outlet} from "react-router-dom";
@@ -19,29 +18,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 
-const CButton = styled(Button)`
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 700;
-  min-width: 45px;
-  max-width: 45px;
-  height:45px;
-  background-color:#F5F5F5;
-  color:black;
-  border-radius: 6.2px;
-  transition: 0.5s;
-  box-sizing: border-box;
-  overflow: hidden;
-
-  :hover {
-    background-color: #F5F5F5;
-    transform: scale(1.15);
-  }
-  :active{
-    transition: 0.1s;
-    transform: scale(1);
-   }
-`;
 function createData(name, login, parol,id) {
   return { name, login, parol,id};
 }
@@ -58,8 +34,8 @@ function createData(name, login, parol,id) {
 function Tableee(props){
 
 return<>
-<div className="table">
 
+<div className="table">
 <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -70,14 +46,33 @@ return<>
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.rows.map((row) => (
+          {props.rows.map((row,rowindex) => (
             <TableRow
-              key={row.name}
+              key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row" ><input className="border"></input></TableCell>
-              <TableCell align="center" style={{fontSize:'16px'}}>{row.login}</TableCell>
-              <TableCell align="center" style={{fontSize:'16px'}}>{row.parol}</TableCell>
+              <TableCell component="th" scope="row" align="center"><input style={{textAlign:'center',width:'300px'}} value={row.name}
+              onChange={(e) => { props.setRows(
+                old => {
+                const newState = [...old];
+                newState[rowindex].name=e.target.value;
+                return newState;
+                })}}></input></TableCell>
+              <TableCell align="center" style={{fontSize:'16px'}}><input style={{textAlign:'center'}} value={row.login}
+              onChange={(e) => { props.setRows(
+                old => {
+                const newState = [...old];
+                newState[rowindex].login=e.target.value;
+                return newState;
+                })}}></input></TableCell>
+
+              <TableCell align="center" style={{fontSize:'16px'}}><input style={{textAlign:'center'}} value={row.parol}
+              onChange={(e) => { props.setRows(
+                old => {
+                const newState = [...old];
+                newState[rowindex].parol=e.target.value;
+                return newState;
+                })}}></input></TableCell>
               <TableCell align="center">{<CButton style={{minWidth: '35px', maxWidth: '35px',  height:'35px'}} 
               onClick={() => {props.setRows(old => old.filter(el => el.id !== row.id))}}>
                 <DeleteForeverIcon fontSize='large'/></CButton>}</TableCell>

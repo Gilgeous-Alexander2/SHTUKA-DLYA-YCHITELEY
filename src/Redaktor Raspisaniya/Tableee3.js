@@ -5,7 +5,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import { styled } from '@mui/material/styles';
-import './App.css'
+import '../App.css'
 import { Box } from "@mui/material";
 
 import {Outlet} from "react-router-dom";
@@ -55,12 +55,11 @@ function createData(name, calories,id) {
 //     createData('Gingerbread', 356, 16.0, 49, 3.9),
 //   ];
 
-function Tableee2(props){
+function Tableee3(props){
 
     
 
-   return<>
-   
+return<>
 <div className="table">
 
 <TableContainer component={Paper}>
@@ -73,23 +72,45 @@ function Tableee2(props){
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.rows2.map((row) => (
+          {props.rows2.map((row,dayindex) => (
             <TableRow
-              key={row.name}
+              key={row.id}
               sx={{ borderBottom:'1px solid rgba(224, 224, 224, 1)'}}>
                 
               <TableCell component="th" scope="row" align="center">{row.name}</TableCell>
 
               <TableCell sx={{borderRight:'1px solid rgba(224, 224, 224, 1)',borderLeft:'1px solid rgba(224, 224, 224, 1)',padding:0}}>
-                {row.login.map(login => (
-                  <div style={{padding: '16px 0 16px 0',width:'100%',textAlign:'center'}} >{login}</div>
+                {row.login.map((predmet,predmetIndex) => (
+                  <div style={{padding: '16px 0 16px 0',width:'100%',textAlign:'center'}} key={predmetIndex}>
+                    {<input value={predmet} onChange={(e) => {
+                    props.setRows2(
+                        old => {
+                            const newState = [...old];
+                            const newLogin = [...newState[dayindex].login]
+                            newLogin[predmetIndex] = e.target.value;
+                            newState[dayindex].login = newLogin;
+                            return newState;
+                            }
+                        )
+                    }}></input>}</div>
                 ))}
               </TableCell>
 
               <TableCell sx={{padding:0}}>
-                  {row.parol.map(parol => (
-                      <div style={{paddingLeft:0,paddingRight:0,width:'100%',textAlign:'center',padding: '16px 0 16px 0'}} >{parol}</div>
-                  ))}
+                {row.parol.map((sobitiye,sobitiyeIndex) => (
+                  <div style={{padding: '16px 0 16px 0',width:'100%',textAlign:'center'}} key={sobitiyeIndex}>
+                    {<input value={sobitiye} onChange={(e) => {
+                    props.setRows2(
+                        old => {
+                            const newState = [...old];
+                            const newLogin = [...newState[dayindex].parol]
+                            newLogin[sobitiyeIndex] = e.target.value;
+                            newState[dayindex].parol = newLogin;
+                            return newState;
+                            }
+                        )
+                    }}></input>}</div>
+                ))}
               </TableCell>
               
             </TableRow>
@@ -111,4 +132,4 @@ function Tableee2(props){
    
 }
 
-export default Tableee2;
+export default Tableee3;
