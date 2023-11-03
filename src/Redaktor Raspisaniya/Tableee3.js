@@ -42,9 +42,7 @@ const CButton = styled(Button)`
     transform: scale(1);
    }
 `;
-function createData(name, calories,id) {
-  return { name, calories,id};
-}
+
 
   
 //   const rows = [
@@ -60,6 +58,9 @@ function Tableee3(props){
     
 
 return<>
+
+{/*РЕДАКТОР РАСПИСАНИЯ*/}
+
 <div className="table">
 
 <TableContainer component={Paper}>
@@ -72,7 +73,8 @@ return<>
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.rows2.map((row,dayindex) => (
+        {props.userData.name === "admin" ? <>
+          {props.rows2[props.count].map((row,dayindex) => (
             <TableRow
               key={row.id}
               sx={{ borderBottom:'1px solid rgba(224, 224, 224, 1)'}}>
@@ -86,9 +88,9 @@ return<>
                     props.setRows2(
                         old => {
                             const newState = [...old];
-                            const newLogin = [...newState[dayindex].login]
+                            const newLogin = [...newState[props.count][dayindex].login]
                             newLogin[predmetIndex] = e.target.value;
-                            newState[dayindex].login = newLogin;
+                            newState[props.count][dayindex].login = newLogin;
                             return newState;
                             }
                         )
@@ -103,18 +105,41 @@ return<>
                     props.setRows2(
                         old => {
                             const newState = [...old];
-                            const newLogin = [...newState[dayindex].parol]
+                            const newLogin = [...newState[props.count][dayindex].parol]
                             newLogin[sobitiyeIndex] = e.target.value;
-                            newState[dayindex].parol = newLogin;
+                            newState[props.count][dayindex].parol = newLogin;
                             return newState;
                             }
                         )
                     }}></input>}</div>
                 ))}
               </TableCell>
+              {localStorage.setItem("SostRows2",JSON.stringify(props.rows2))}
+            </TableRow>
+          ))}</> :
+          <>
+          {props.rows2[props.count].map((row) => (
+            <TableRow
+              key={row.id}
+              sx={{ borderBottom:'1px solid rgba(224, 224, 224, 1)'}}>
+                
+              <TableCell component="th" scope="row" align="center">{row.name}</TableCell>
+
+              <TableCell sx={{borderRight:'1px solid rgba(224, 224, 224, 1)',borderLeft:'1px solid rgba(224, 224, 224, 1)',padding:0}}>
+                {row.login.map(login => (
+                  <div style={{padding: '16px 0 16px 0',width:'100%',textAlign:'center'}} >{login}</div>
+                ))}
+              </TableCell>
+
+              <TableCell sx={{padding:0}}>
+                  {row.parol.map(parol => (
+                      <div style={{paddingLeft:0,paddingRight:0,width:'100%',textAlign:'center',padding: '16px 0 16px 0'}} >{parol}</div>
+                  ))}
+              </TableCell>
               
             </TableRow>
-          ))}
+          ))}</>
+        }
         </TableBody>
       </Table>
       

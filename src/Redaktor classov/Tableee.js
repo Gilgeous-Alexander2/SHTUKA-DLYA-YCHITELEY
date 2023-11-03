@@ -35,6 +35,8 @@ function Tableee(props){
 
 return<>
 
+{/*ДОБАВИТЬ КЛАСС*/}
+
 <div className="table">
 <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -46,23 +48,27 @@ return<>
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.rows.map((row,rowindex) => (
+          {props.userData.name === "admin" ?
+          <>
+            {props.rows[props.count].map((row,rowindex) => (
             <TableRow
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
+              
               <TableCell component="th" scope="row" align="center"><input style={{textAlign:'center',width:'300px'}} value={row.name}
               onChange={(e) => { props.setRows(
                 old => {
                 const newState = [...old];
-                newState[rowindex].name=e.target.value;
+                newState[props.count][rowindex].name=e.target.value;
+
                 return newState;
                 })}}></input></TableCell>
               <TableCell align="center" style={{fontSize:'16px'}}><input style={{textAlign:'center'}} value={row.login}
               onChange={(e) => { props.setRows(
                 old => {
                 const newState = [...old];
-                newState[rowindex].login=e.target.value;
+                newState[props.count][rowindex].login=e.target.value;
                 return newState;
                 })}}></input></TableCell>
 
@@ -70,30 +76,54 @@ return<>
               onChange={(e) => { props.setRows(
                 old => {
                 const newState = [...old];
-                newState[rowindex].parol=e.target.value;
+                newState[props.count][rowindex].parol=e.target.value;
+              
                 return newState;
                 })}}></input></TableCell>
+
               <TableCell align="center">{<CButton style={{minWidth: '35px', maxWidth: '35px',  height:'35px'}} 
-              onClick={() => {props.setRows(old => old.filter(el => el.id !== row.id))}}>
+              onClick={() => {props.setRows(
+                old => {
+                const newState = [...old];
+                newState[props.count] = newState[props.count].filter(el => el.id !== row.id)
+    
+                return newState;
+                });}}>
                 <DeleteForeverIcon fontSize='large'/></CButton>}</TableCell>
-              
+                {localStorage.setItem("SostRows",JSON.stringify(props.rows))}
+            </TableRow>))}
+          </> : 
+          <>
+          {props.rows[props.count].map((row) => (
+            <TableRow
+              key={row.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row" align="center" style={{fontSize:'16px'}}>{row.name}</TableCell>
+              <TableCell align="center" style={{fontSize:'16px'}}>{row.login}</TableCell>
+              <TableCell align="center" style={{fontSize:'16px'}}>{row.parol}</TableCell>
+              {localStorage.setItem("SostRows",JSON.stringify(props.rows))}
             </TableRow>
-          ))}
+          ))}</>}
         </TableBody>
       </Table>
       
     </TableContainer>
     </div>
-    
-
+        { props.userData.name === "admin" ? <>
         <div style={{display:'flex',flexGrow:1,}}></div>
-        <div style={{paddingLeft:'125px',marginTop:'20px'}}>
-          {props.rows.length<=20 && <CButton  onClick={() => {props.setRows(old => 
-        [...old, createData('Маркевич Александр Викторович', 'Login', 1234567,{id: uuidv4()})])}
+        {<div style={{paddingLeft:'125px',marginTop:'20px'}}>
+          {props.rows[props.count].length<=20 && <CButton  onClick={() => {props.setRows(
+            old => {
+              const newState = [...old];
+              newState[props.count] = [...newState[props.count],
+              createData('Маркевич Алекесандр Викторович', 'Login', 1234567, uuidv4())]
+              return newState;
+            }
+        )}
         }><AddIcon fontSize='large'/></CButton>}
-        </div>
+        </div>} </> : null}
 
-        
         <div style={{height:'100px'}}></div>
    <Outlet/>
 

@@ -18,87 +18,90 @@ import Container from "@mui/material/Container";
 
 export default function DialogAuthoriz(props) {
 
-    const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-      };
-    
-      const handleClose = () => {
-        setOpen(false);
-      };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-      const [login,setLogin] = React.useState("");
-      const [password,setPassword] = React.useState("");
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const [login, setLogin] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+
 
   return (
     <div>
 
       <CButton2 onClick={handleClickOpen}>Регистрация</CButton2>
-      <Dialog 
+      <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
-        
+
       >
         <Container component="main" maxWidth="xs">
-      <Box
-        sx={{  
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <Box component="form"  noValidate sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            onChange={(e) => {setLogin(e.target.value)}}
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            onChange={(e) => {setPassword(e.target.value)}}
-          />
+          <Box
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography component="h1" variant="h5">
+              Регистрация
+            </Typography>
+            <Box component="form" noValidate sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Логин"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                onChange={(e) => { setLogin(e.target.value) }}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Пароль"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={(e) => { setPassword(e.target.value) }}
+              />
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 ,bgcolor:'red'}}
-            onClick={() => { handleClose()
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, bgcolor: 'red' }}
+                onClick={() => {
+                  handleClose()
                   const answer = {
                     id: 1,
                     name: login,
                     token: "fcgvhbjnbmvcfbvmnbvgfhhjjnbhvgf"
                   }
                   props.setAuthState(answer);
-                  localStorage.setItem("userData",JSON.stringify(answer))
+                  localStorage.setItem("userData", JSON.stringify(answer))
                 }}
-          >
-            Sign In
-          </Button>
-          <div style={{height:'50px'}}></div>
-        </Box>
-      </Box>
-    </Container>
+              >
+                Зарегистрироваться
+              </Button>
+              <div style={{ height: '50px' }}></div>
+            </Box>
+          </Box>
+        </Container>
       </Dialog>
     </div>
   );
