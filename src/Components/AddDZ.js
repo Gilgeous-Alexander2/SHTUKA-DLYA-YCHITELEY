@@ -1,11 +1,14 @@
 import React from "react";
 import { UploadFile } from "@mui/icons-material";
+import pdf from "./pdf.png";
 
+let f = [1, 1]
 
 export default function AddDZ() {
 
+
     const [drag, setDrag] = React.useState(false);
-    let f = null
+    const [files, setFiles] = React.useState([]);
 
     function DragStartHandler(e) {
         e.preventDefault()
@@ -19,14 +22,18 @@ export default function AddDZ() {
 
     function OnDropHandler(e) {
         e.preventDefault()
-        let files = [...e.dataTransfer.files]
-
-        console.log(files)
+        f = [...e.dataTransfer.files]
+        setFiles(old => {
+            let fil = [...old]
+            fil.push(...f)
+            return fil
+        })
         setDrag(false)
+
     }
 
     return <>
-        <div style={{display:'flex',}}>
+        <div style={{ display: 'flex', marginTop: '100px', position: 'relative', gap: '20px' , height:'650px'}}>
             {drag ? <div className="dropArea on"
 
                 onDragStart={e => DragStartHandler(e)}
@@ -41,15 +48,22 @@ export default function AddDZ() {
                     onDragLeave={e => DragLeaveHandler(e)}
                     onDragOver={e => DragStartHandler(e)}
                 >
-                    <UploadFile style={{ fontSize: '100px' }}></UploadFile>{drag}</div>
+                    <UploadFile style={{ fontSize: '100px' }}></UploadFile></div>
 
             }
 
-            <div style={{width:'200px',height:'400px',backgroundColor:'black',flexDirection:'row-reverse'}}>
-                wehfnjwewj
+            <div className="oknofailov">
+                {!files ? null :
+                    files.map((item, itemid) =>
+                        <button >
+                            <div style={{ display: 'flex', flexDirection: 'row', gap: '20px',alignItems:'center' }}>
+                                <img src={pdf} style={{ width: '20px',height:'20px' }}></img>
+                                {item.name}
+                            </div>
+                        </button>)}
             </div>
 
-        </div>
+        </div >
 
 
     </>
