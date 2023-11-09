@@ -70,6 +70,7 @@ return<>
             <TableCell align="center" style={{width:'40%'}}> День недели</TableCell>
             <TableCell align="center" style={{width:'30%'}}>Предметы</TableCell>
             <TableCell align="center" style={{width:'30%'}}>События</TableCell>
+            <TableCell align="center" style={{width:'30%'}}>Оценка</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -114,6 +115,23 @@ return<>
                     }}></input>}</div>
                 ))}
               </TableCell>
+
+              <TableCell sx={{padding:0}}>
+                {row.ocenka.map((sobitiye,sobitiyeIndex) => (
+                  <div style={{padding: '16px 0 16px 0',width:'100%',textAlign:'center'}} key={sobitiyeIndex}>
+                    {<input value={sobitiye} onChange={(e) => {
+                    props.setRows2(
+                        old => {
+                            const newState = [...old];
+                            const newLogin = [...newState[props.count][dayindex].ocenka]
+                            newLogin[sobitiyeIndex] = e.target.value;
+                            newState[props.count][dayindex].ocenka = newLogin;
+                            return newState;
+                            }
+                        )
+                    }}></input>}</div>
+                ))}
+              </TableCell>
               {localStorage.setItem("SostRows2",JSON.stringify(props.rows2))}
             </TableRow>
           ))}</> :
@@ -131,12 +149,18 @@ return<>
                 ))}
               </TableCell>
 
-              <TableCell sx={{padding:0}}>
+              <TableCell sx={{padding:0,borderRight:'1px solid rgba(224, 224, 224, 1)'}}>
                   {row.parol.map(parol => (
                       <div style={{paddingLeft:0,paddingRight:0,width:'100%',textAlign:'center',padding: '16px 0 16px 0'}} >{parol}</div>
                   ))}
               </TableCell>
               
+              <TableCell sx={{padding:0}}>
+                  {row.ocenka.map(ocenka => (
+                      <div style={{textAlign:'center',padding: '16px 0 16px 0'}} >{ocenka}</div>
+                  ))}
+              </TableCell>
+
             </TableRow>
           ))}</>
         }

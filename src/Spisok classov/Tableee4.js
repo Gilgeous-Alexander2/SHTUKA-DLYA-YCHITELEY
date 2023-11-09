@@ -48,7 +48,7 @@ return<>
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row" align="center" style={{fontSize:'16px'}}>{row.name}</TableCell>
+              <TableCell component="th" scope="row" align="center" style={{fontSize:'1px'}}>{row.name}</TableCell>
               <TableCell align="center" style={{fontSize:'16px'}}>{row.login}</TableCell>
               <TableCell align="center" style={{fontSize:'16px'}}>{row.parol}</TableCell>
               

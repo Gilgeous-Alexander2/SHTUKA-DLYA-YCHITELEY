@@ -3,6 +3,7 @@ import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AddIcon from '@mui/icons-material/Add';
+import DoneIcon from '@mui/icons-material/Done';
 import { CButton } from "../Components/CButton";
 
 import '../App.css'
@@ -42,9 +43,11 @@ return<>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="center" style={{width:'40%'}}> ФИО</TableCell>
-            <TableCell align="center" style={{width:'30%'}}>Логин</TableCell>
-            <TableCell align="center" style={{width:'30%'}}>Пароль</TableCell>
+            <TableCell align="center" style={{width:'30%'}}> ФИО</TableCell>
+            <TableCell align="center" style={{width:'20%'}}>Логин</TableCell>
+            <TableCell align="center" style={{width:'20%'}}>Пароль</TableCell>
+            {props.userData.name==="admin"? <><TableCell align="center" style={{width:'10%'}}>Удалить</TableCell>
+            <TableCell align="center" style={{width:'15%'}}>Поставить оценку</TableCell></> : null}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -90,6 +93,7 @@ return<>
                 return newState;
                 });}}>
                 <DeleteForeverIcon fontSize='large'/></CButton>}</TableCell>
+                <TableCell align="center"><NavLink to={`/items${props.tab}/${props.knop[props.count].id}/${props.rows[props.count][0].id}`}><CButton><DoneIcon fontSize='large'/></CButton></NavLink></TableCell>
                 {localStorage.setItem("SostRows",JSON.stringify(props.rows))}
             </TableRow>))}
           </> : 

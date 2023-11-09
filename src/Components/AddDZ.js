@@ -3,12 +3,12 @@ import { UploadFile } from "@mui/icons-material";
 import pdf from "./pdf.png";
 
 let f = [1, 1]
+let ff = []
 
-export default function AddDZ() {
+export default function AddDZ(props) {
 
 
     const [drag, setDrag] = React.useState(false);
-    const [files, setFiles] = React.useState([]);
 
     function DragStartHandler(e) {
         e.preventDefault()
@@ -23,17 +23,20 @@ export default function AddDZ() {
     function OnDropHandler(e) {
         e.preventDefault()
         f = [...e.dataTransfer.files]
-        setFiles(old => {
+        props.setFiles(old => {
             let fil = [...old]
-            fil.push(...f)
+            fil[props.count].push(...f)
+            ff = fil
             return fil
         })
+        localStorage.setItem("SostFiles", JSON.stringify(ff))
+
         setDrag(false)
 
     }
 
     return <>
-        <div style={{ display: 'flex', marginTop: '100px', position: 'relative', gap: '20px' , height:'650px'}}>
+        <div style={{ display: 'flex', marginTop: '100px', position: 'relative', gap: '20px', height: '650px', marginBottom: '100px' }}>
             {drag ? <div className="dropArea on"
 
                 onDragStart={e => DragStartHandler(e)}
@@ -53,11 +56,11 @@ export default function AddDZ() {
             }
 
             <div className="oknofailov">
-                {!files ? null :
-                    files.map((item, itemid) =>
+                {!props.files ? null :
+                    props.files[props.count].map((item, itemid) =>
                         <button >
-                            <div style={{ display: 'flex', flexDirection: 'row', gap: '20px',alignItems:'center' }}>
-                                <img src={pdf} style={{ width: '20px',height:'20px' }}></img>
+                            <div className="fail">
+                                <img src={pdf} style={{ width: '20px', height: '20px' }}></img>
                                 {item.name}
                             </div>
                         </button>)}
