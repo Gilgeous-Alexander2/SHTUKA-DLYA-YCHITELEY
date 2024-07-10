@@ -118,7 +118,7 @@ return<>
 
               <TableCell sx={{padding:0}}>
                 {row.ocenka.map((sobitiye,sobitiyeIndex) => (
-                  <div style={{padding: '16px 0 16px 0',width:'100%',textAlign:'center'}} key={sobitiyeIndex}>
+                  <div style={{padding: '16px 30px 16px 0',width:'70%',textAlign:'center'}} key={sobitiyeIndex}>
                     {<input value={sobitiye} onChange={(e) => {
                     props.setRows2(
                         old => {
